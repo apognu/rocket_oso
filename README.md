@@ -6,6 +6,8 @@ It provides a request guard that will check the given actor is allowed to access
 
 It does not replace finer grained authorization that could implement your business logic.
 
+This follows Rocket's repository tip, so it can run async and on stable Rust. This will prevent it from being published on [crates.io](https://crates.io) until Rocket 0.5 is out.
+
 ## Usage
 
 ### Setting up
