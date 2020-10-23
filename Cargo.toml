@@ -1,0 +1,18 @@
+[package]
+name = "rocket_oso"
+version = "0.1.0"
+authors = ["Antoine POPINEAU <antoine@popineau.eu>"]
+license = "MIT"
+
+description = "Rocket request guards for oso policy engine"
+keywords = ["rocket", "oso", "http", "authorization", "policy"]
+categories = ["web-programming", "authentication"]
+homepage = "https://github.com/apognu/rocket_oso"
+readme = "README.md"
+
+edition = "2018"
+
+[dependencies]
+oso = "^0.7"
+rocket = { git = "https://github.com/SergioBenitez/Rocket" }
+thiserror = "^1.0"
