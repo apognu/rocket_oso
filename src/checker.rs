@@ -10,7 +10,7 @@ use super::{Error, RocketOso};
 /// [`Resolver`](trait.Resolver.html) to retrieve the current actor.
 #[async_trait]
 pub trait PolicyChecker: Default {
-  async fn apply<A>(&self, request: &Request<'_>, policies: State<'_, RocketOso<'_, A>>) -> Result<bool, Error>
+  async fn check<A>(&self, request: &Request<'_>, policies: State<'_, RocketOso<'_, A>>) -> Result<bool, Error>
   where
     A: ToPolar;
 }
@@ -24,7 +24,7 @@ pub struct RoutePolicyChecker;
 
 #[async_trait]
 impl PolicyChecker for RoutePolicyChecker {
-  async fn apply<A>(&self, request: &Request<'_>, policies: State<'_, RocketOso<'_, A>>) -> Result<bool, Error>
+  async fn check<A>(&self, request: &Request<'_>, policies: State<'_, RocketOso<'_, A>>) -> Result<bool, Error>
   where
     A: ToPolar,
   {

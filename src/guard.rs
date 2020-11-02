@@ -50,9 +50,9 @@ where
 
   async fn from_request(request: &'a Request<'r>) -> request::Outcome<Self, Self::Error> {
     if let Outcome::Success(policies) = request.guard::<State<RocketOso<A>>>().await {
-      let applier = C::default();
+      let checker = C::default();
 
-      return match applier.apply(request, policies).await {
+      return match checker.check(request, policies).await {
         Ok(true) => Outcome::Success(Policy::default()),
         Ok(false) => Outcome::Failure((Status::Unauthorized, Error::Unauthorized)),
         Err(err) => Outcome::Failure((Status::InternalServerError, err)),
